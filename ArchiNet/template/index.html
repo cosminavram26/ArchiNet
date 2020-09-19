@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArchiNet House Predictions</title>
+</head>
+<body>
+
+    <h2>Predict your building instantly</h2>
+    {{temp}}
+    <h3>Please enter details</h3>
+    <br>
+    <form method="post" enctype="multipart/form-data" action="predictArchiNet">
+        {% csrf_token %}
+        <div class="col-md-4 col-sm-4">
+            <label for="fname">
+                Stories:
+            </label>
+        </div>
+        <input name="storiesVal" type="text" value="{{temp.stories}}" id="fname">
+        <br><br>
+        <div class="col-md-4 col-sm-4">
+            <label for="lname">
+                Architecture type:
+            </label>
+        </div>
+        <input name="architectureVal" type="text" value="{{temp.architecture}}" id="lname">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h1></h1>
+    <img src="{% static 'image_generated.png'%}">
+</body>
+</html>
